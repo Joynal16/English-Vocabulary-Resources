@@ -1,0 +1,107 @@
+# English Janala — Vocabulary Learning
+
+English Janala is a lightweight English vocabulary learning site for Bengali
+speakers. Browse vocabulary by lesson, look up a word, hear its pronunciation,
+and review meanings and examples in a responsive interface.
+
+**Live site:** After the first successful GitHub Pages deployment, open
+`https://<your-github-username>.github.io/English-Vocabulary-Resources/`.
+
+## Features
+
+- Demo sign-in page with a simple, client-side login flow
+- Vocabulary lessons loaded from the Programming Hero API
+- Search across the available vocabulary
+- Word details, including meaning, pronunciation, examples, and synonyms
+- Browser text-to-speech pronunciation
+- Light and dark themes, with the selected theme saved in the browser
+- Responsive layout and Bengali-friendly typography
+
+## Run locally
+
+1. Install [Git](https://git-scm.com/downloads) and a modern browser.
+2. Clone the repository and enter its folder:
+
+   ```powershell
+   git clone https://github.com/<your-github-username>/English-Vocabulary-Resources.git
+   cd English-Vocabulary-Resources
+   ```
+
+3. Start a local web server from the project folder. For example, with Python:
+
+   ```powershell
+   py -m http.server 8000
+   ```
+
+   Or use the **Live Server** extension in Visual Studio Code.
+
+4. Open [http://localhost:8000](http://localhost:8000) in your browser.
+5. On the sign-in page, use the demo credentials:
+
+   - Number: `12345678910`
+   - PIN: `1234`
+
+6. Choose a lesson or search for a word. Select the information button for
+   details, or the speaker button to hear a word.
+
+> **Demo sign-in only:** The credentials are hard-coded in the browser and do
+> not provide real authentication or protect user data. Do not enter personal
+> information.
+
+## Publish with GitHub Pages
+
+The repository includes a GitHub Actions workflow that publishes the static
+site whenever changes are pushed to `main`.
+
+1. Create a **public** GitHub repository named `English-Vocabulary-Resources`.
+2. From the project folder, initialize Git and push the files:
+
+   ```powershell
+   git init
+   git add .
+   git commit -m "Create English Janala vocabulary learning app"
+   git branch -M main
+   git remote add origin https://github.com/<your-github-username>/English-Vocabulary-Resources.git
+   git push -u origin main
+   ```
+
+   Replace `<your-github-username>` with your GitHub username. If this folder
+   is already a Git repository, skip `git init`; if `origin` already exists,
+   update it with `git remote set-url origin <repository-url>`.
+
+3. In the GitHub repository, open **Settings → Pages** and set the build and
+   deployment source to **GitHub Actions** if it is not already selected.
+4. Open the **Actions** tab and wait for the **Deploy to GitHub Pages** workflow
+   to finish successfully.
+5. Visit
+   `https://<your-github-username>.github.io/English-Vocabulary-Resources/`.
+   The first deployment can take a few minutes. Later pushes to `main` publish
+   updates automatically.
+
+## Project structure
+
+```text
+.
+├── .github/
+│   └── workflows/
+│       └── pages.yml       # GitHub Pages deployment
+├── assets/                 # Logo, illustrations, and icons
+├── Script/
+│   ├── index.js            # Lessons, search, and word details
+│   └── login.js            # Demo sign-in flow
+├── home.html               # Vocabulary learning page
+├── index.html              # Sign-in page
+└── style.css               # Additional styles
+```
+
+## Technologies and services
+
+- HTML, CSS, and vanilla JavaScript
+- Tailwind CSS and daisyUI, loaded from CDNs
+- Font Awesome and Google Fonts
+- [Programming Hero vocabulary API](https://openapi.programming-hero.com/)
+- GitHub Actions and GitHub Pages for deployment
+
+The site has no package installation or build step. An internet connection is
+needed for the external styles, fonts, and vocabulary API. Word audio uses the
+browser's Web Speech API and depends on the browser's available voices.

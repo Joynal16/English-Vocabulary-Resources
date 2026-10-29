@@ -1,0 +1,757 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <script>
+      (function () {
+        var saved = null;
+        try {
+          saved = localStorage.getItem("theme");
+        } catch (e) {}
+        var dark = saved
+          ? saved === "dark"
+          : window.matchMedia("(prefers-color-scheme: dark)").matches;
+        document.documentElement.setAttribute(
+          "data-theme",
+          dark ? "dark" : "light",
+        );
+      })();
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>English Janala | Best Platform for learning English</title>
+
+    <!-- Font-Integration -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!--Fav-Icon-->
+    <link rel="shortcut icon" href="./assets/logo.png" type="image/x-icon" />
+
+    <!--Font Awesome-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.css"
+      integrity="sha512-x9WwyMYBnlXMNQ6kQ/Lyzu1NqIhLQKL5Oq6xByfXuRj7s9CskyCbLv/1IjqzJmXwFXWr0ov6jBV7Qbc0hh9nHg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- Tailwind CSS + daisyUI -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+      @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+      /* Dark-mode safety net for content that index.js builds
+               (level buttons, word cards, modal details). It remaps the
+               common light Tailwind classes, so no JS changes are needed. */
+      [data-theme="dark"]
+        :is(#level-container, #word-Container, #details-Container) {
+        & .bg-white,
+        & .bg-gray-50,
+        & .bg-gray-100,
+        & .bg-slate-50,
+        & .bg-slate-100 {
+          @apply bg-slate-800;
+        }
+
+        & .bg-sky-50,
+        & .bg-sky-100,
+        & .bg-blue-50,
+        & .bg-blue-100 {
+          @apply bg-sky-950;
+        }
+
+        & .text-black,
+        & .text-gray-900,
+        & .text-gray-800,
+        & .text-gray-700,
+        & .text-slate-900,
+        & .text-slate-800,
+        & .text-slate-700 {
+          @apply text-slate-100;
+        }
+
+        & .text-gray-600,
+        & .text-gray-500,
+        & .text-slate-600,
+        & .text-slate-500 {
+          @apply text-slate-300;
+        }
+
+        & .text-gray-400,
+        & .text-slate-400 {
+          @apply text-slate-400;
+        }
+
+        & .border-gray-100,
+        & .border-gray-200,
+        & .border-gray-300,
+        & .border-slate-100,
+        & .border-slate-200,
+        & .border-sky-100 {
+          @apply border-slate-700;
+        }
+
+        & .shadow-sm,
+        & .shadow,
+        & .shadow-md {
+          @apply shadow-none;
+        }
+      }
+    </style>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body
+    class="bg-white text-slate-800 antialiased transition-colors duration-300 dark:bg-slate-950 dark:text-slate-100"
+  >
+    <!-- ================= HEADER ================= -->
+    <header
+      class="sticky top-0 z-50 border-b border-slate-200/70 bg-white/80 backdrop-blur-md dark:border-slate-800 dark:bg-slate-950/80"
+    >
+      <div class="navbar w-11/12 max-w-7xl mx-auto px-0 min-h-16">
+        <div class="navbar-start">
+          <div class="dropdown">
+            <div
+              tabindex="0"
+              role="button"
+              class="btn btn-ghost btn-circle lg:hidden"
+            >
+              <svg
+                aria-label="Menu"
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h8m-8 6h16"
+                />
+              </svg>
+            </div>
+            <ul
+              tabindex="-1"
+              class="menu menu-sm dropdown-content bg-white rounded-2xl z-10 mt-3 w-56 p-2 shadow-xl border border-slate-100 dark:bg-slate-900 dark:border-slate-800 dark:text-slate-100"
+            >
+              <li>
+                <a href="#faq" class="rounded-xl"
+                  ><i class="fa-solid fa-circle-question"></i> FAQ</a
+                >
+              </li>
+              <li>
+                <a href="#learn" class="rounded-xl"
+                  ><i class="fa-solid fa-book-open"></i> Learn</a
+                >
+              </li>
+              <li>
+                <a href="" class="rounded-xl text-rose-500"
+                  ><i class="fa-solid fa-right-from-bracket"></i> Logout</a
+                >
+              </li>
+            </ul>
+          </div>
+          <a href class="flex items-center gap-1.5">
+            <span class="text-lg sm:text-xl font-extrabold tracking-tight"
+              >English</span
+            >
+            <img
+              src="./assets/logo.png"
+              alt="English Janala logo"
+              class="h-7 w-auto sm:h-9"
+            />
+            <span class="font-bangla text-lg sm:text-xl font-semibold"
+              >জানালা</span
+            >
+          </a>
+        </div>
+        <div class="navbar-end flex items-center gap-1 sm:gap-2">
+          <ul class="hidden lg:flex items-center gap-2">
+            <li>
+              <a
+                href="#faq"
+                class="btn btn-ghost rounded-full text-slate-600 hover:text-sky-600 hover:bg-sky-50 dark:text-slate-300 dark:hover:text-sky-300 dark:hover:bg-slate-800"
+                ><i class="fa-solid fa-circle-question"></i> FAQ</a
+              >
+            </li>
+            <li>
+              <a
+                href="#learn"
+                class="btn btn-ghost rounded-full text-slate-600 hover:text-sky-600 hover:bg-sky-50 dark:text-slate-300 dark:hover:text-sky-300 dark:hover:bg-slate-800"
+                ><i class="fa-solid fa-book-open"></i> Learn</a
+              >
+            </li>
+            <li>
+              <a
+                href="index.html"
+                class="btn btn-primary rounded-full px-6 shadow-md shadow-sky-200 dark:shadow-none"
+                ><i class="fa-solid fa-right-from-bracket"></i> Logout</a
+              >
+            </li>
+          </ul>
+          <button
+            id="theme-toggle"
+            type="button"
+            aria-label="Toggle dark mode"
+            class="btn btn-ghost btn-circle text-lg text-slate-600 hover:bg-sky-50 dark:text-slate-300 dark:hover:bg-slate-800"
+          >
+            <span class="dark:hidden"><i class="fa-solid fa-moon"></i></span>
+            <span class="hidden dark:inline text-amber-300"
+              ><i class="fa-solid fa-sun"></i
+            ></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- ================= HERO ================= -->
+    <section
+      class="relative overflow-hidden bg-linear-to-b from-sky-50 via-white to-white dark:from-slate-900 dark:via-slate-950 dark:to-slate-950"
+    >
+      <div
+        aria-hidden="true"
+        class="pointer-events-none absolute -top-24 -left-24 size-72 sm:size-96 rounded-full bg-sky-200/60 dark:bg-sky-500/20 blur-3xl"
+      ></div>
+      <div
+        aria-hidden="true"
+        class="pointer-events-none absolute top-24 -right-20 size-72 sm:size-96 rounded-full bg-indigo-200/50 dark:bg-indigo-500/20 blur-3xl"
+      ></div>
+
+      <div
+        class="relative flex flex-col-reverse md:flex-row justify-between items-center gap-10 md:gap-12 py-10 md:py-16 lg:py-20 w-11/12 max-w-7xl mx-auto"
+      >
+        <div class="content flex-1 w-full text-center md:text-left">
+          <h2
+            class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-4 sm:mb-6"
+          >
+            <span
+              class="bg-linear-to-r from-sky-500 to-indigo-600 dark:from-sky-400 dark:to-indigo-400 bg-clip-text text-transparent"
+              >English</span
+            >
+            is Easy!
+          </h2>
+          <p
+            class="font-bangla text-base sm:text-lg leading-relaxed text-slate-600 dark:text-slate-300 max-w-xl mx-auto md:mx-0"
+          >
+            আজ থেকেই আপনার ভাষা শেখার যাত্রা শুরু করুন। আপনি যদি নতুন হন অথবা
+            আপনার দক্ষতা বাড়াতে চান, আমাদের Interactive Lessons আপনাকে নিয়ে
+            যাবে অন্য একটি Level এ
+          </p>
+
+          <div
+            class="mt-8 w-full max-w-md mx-auto md:mx-0 rounded-3xl border border-slate-200 bg-white/80 backdrop-blur p-5 sm:p-6 shadow-xl shadow-sky-100/70 dark:border-slate-800 dark:bg-slate-900/80 dark:shadow-none"
+          >
+            <fieldset class="fieldset w-full gap-3">
+              <input
+                type="text"
+                class="input w-full h-12 rounded-xl bg-slate-50 focus:bg-white dark:bg-slate-800 dark:focus:bg-slate-800 dark:border-slate-700 dark:text-slate-100"
+                placeholder="Enter your name"
+              />
+              <input
+                type="password"
+                class="input w-full h-12 rounded-xl bg-slate-50 focus:bg-white dark:bg-slate-800 dark:focus:bg-slate-800 dark:border-slate-700 dark:text-slate-100"
+                placeholder="Password"
+              />
+              <button
+                class="btn btn-primary h-12 rounded-xl w-full mt-1 text-base shadow-md shadow-sky-200 dark:shadow-none"
+              >
+                Get Started
+              </button>
+            </fieldset>
+          </div>
+        </div>
+
+        <div class="image relative flex-1 w-full flex justify-center">
+          <div
+            aria-hidden="true"
+            class="absolute inset-x-8 inset-y-6 rounded-full bg-linear-to-br from-sky-200 to-indigo-200 dark:from-sky-500/30 dark:to-indigo-500/30 blur-2xl opacity-70"
+          ></div>
+          <img
+            src="./assets/Student.png"
+            alt="Student learning English"
+            class="relative w-3/4 sm:w-1/2 md:w-full max-w-md lg:max-w-lg h-auto drop-shadow-2xl"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= LEVELS ================= -->
+    <section
+      id="learn"
+      class="scroll-mt-20 w-11/12 max-w-7xl mx-auto pt-6 sm:pt-10"
+    >
+      <div class="text-center mb-6 sm:mb-10">
+        <h2
+          class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight"
+        >
+          <span
+            class="bg-linear-to-r from-sky-500 to-indigo-600 dark:from-sky-400 dark:to-indigo-400 bg-clip-text text-transparent"
+            >Let's</span
+          >
+          Learn Vocabularies
+        </h2>
+        <p class="mt-3 text-sm sm:text-base text-slate-500 dark:text-slate-400">
+          Pick a lesson level, or search for a word.
+        </p>
+      </div>
+
+      <div
+        class="flex flex-wrap justify-center gap-2 sm:gap-4 lg:gap-5 mb-4"
+        id="level-container"
+      ></div>
+    </section>
+
+    <!-- ================= SEARCH ================= -->
+    <section class="w-11/12 max-w-7xl mx-auto flex justify-center pt-4">
+      <div
+        class="join w-full max-w-xl rounded-full shadow-lg shadow-sky-100 dark:shadow-none"
+      >
+        <label
+          class="input validator join-item flex-1 w-full h-12 rounded-l-full! bg-white border-slate-200 dark:bg-slate-900 dark:border-slate-700 dark:text-slate-100"
+        >
+          <i class="fa-solid fa-magnifying-glass text-slate-400"></i>
+          <input
+            id="input-search"
+            type="text"
+            placeholder="Search Vocabulary"
+            required
+          />
+        </label>
+        <button
+          id="btn-search"
+          class="btn btn-primary join-item h-12 rounded-r-full! px-5 sm:px-8"
+        >
+          Search
+        </button>
+      </div>
+    </section>
+
+    <!-- ================= SPINNER ================= -->
+    <section id="spinner" class="flex justify-center items-center py-10 hidden">
+      <span class="loading loading-bars loading-xl text-sky-500"></span>
+    </section>
+
+    <!-- ================= WORDS ================= -->
+    <section
+      id="word-Container"
+      class="bg-slate-50 border border-slate-200 dark:bg-slate-900 dark:border-slate-800 rounded-3xl p-4 sm:p-6 lg:p-10 w-11/12 max-w-7xl mx-auto my-6 sm:my-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
+    >
+      <div
+        class="font-bangla space-y-3 sm:space-y-4 text-center bg-white dark:bg-slate-800 col-span-full rounded-2xl border border-dashed border-sky-300 dark:border-sky-700 py-10 sm:py-14 px-4"
+      >
+        <i
+          class="fa-regular fa-lightbulb text-3xl sm:text-4xl text-sky-400"
+        ></i>
+        <p class="text-base sm:text-lg lg:text-xl font-medium text-slate-400">
+          আপনি এখনো কোন Lesson Select করেননি
+        </p>
+        <h2
+          class="text-xl sm:text-2xl lg:text-3xl font-bold text-slate-800 dark:text-slate-100"
+        >
+          উপরের একটি Lesson Select করুন।
+        </h2>
+      </div>
+    </section>
+
+    <!-- ================= FAQ ================= -->
+    <section
+      id="faq"
+      class="scroll-mt-20 w-11/12 max-w-7xl mx-auto py-10 sm:py-16"
+    >
+      <div class="grid lg:grid-cols-3 gap-8 lg:gap-12">
+        <div class="text-center lg:text-left lg:sticky lg:top-28 self-start">
+          <h2
+            class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight"
+          >
+            <span
+              class="bg-linear-to-r from-sky-500 to-indigo-600 dark:from-sky-400 dark:to-indigo-400 bg-clip-text text-transparent"
+              >Frequently</span
+            >
+            Asked Questions
+          </h2>
+          <p
+            class="mt-4 text-sm sm:text-base text-slate-500 dark:text-slate-400 max-w-md mx-auto lg:mx-0"
+          >
+            Quick answers to the things learners ask most before they get
+            started.
+          </p>
+          <a
+            href="#learn"
+            class="btn btn-primary rounded-full px-8 mt-6 shadow-md shadow-sky-200 dark:shadow-none"
+          >
+            <i class="fa-solid fa-book-open"></i> Start Learning
+          </a>
+        </div>
+
+        <div class="lg:col-span-2 space-y-3 sm:space-y-4">
+          <div
+            class="collapse collapse-arrow bg-white border border-slate-200 dark:bg-slate-900 dark:border-slate-800 rounded-2xl"
+          >
+            <input
+              type="radio"
+              name="faq-accordion"
+              checked
+              aria-label="What is English Janala?"
+            />
+            <div
+              class="collapse-title text-base sm:text-lg font-semibold pe-10"
+            >
+              What is English Janala?
+            </div>
+            <div
+              class="collapse-content text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed"
+            >
+              <p>
+                English Janala is a beginner-friendly platform that helps you
+                build your English vocabulary through interactive lessons, one
+                level at a time.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="collapse collapse-arrow bg-white border border-slate-200 dark:bg-slate-900 dark:border-slate-800 rounded-2xl"
+          >
+            <input
+              type="radio"
+              name="faq-accordion"
+              aria-label="Do I need to sign up to start learning?"
+            />
+            <div
+              class="collapse-title text-base sm:text-lg font-semibold pe-10"
+            >
+              Do I need to sign up to start learning?
+            </div>
+            <div
+              class="collapse-content text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed"
+            >
+              <p>
+                Just use the Get Started form at the top of the page. Enter your
+                name and password and you can begin right away.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="collapse collapse-arrow bg-white border border-slate-200 dark:bg-slate-900 dark:border-slate-800 rounded-2xl"
+          >
+            <input
+              type="radio"
+              name="faq-accordion"
+              aria-label="How do I choose a lesson?"
+            />
+            <div
+              class="collapse-title text-base sm:text-lg font-semibold pe-10"
+            >
+              How do I choose a lesson?
+            </div>
+            <div
+              class="collapse-content text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed"
+            >
+              <p>
+                Under &ldquo;Let&rsquo;s Learn Vocabularies&rdquo; you will see
+                a button for each lesson level. Tap one and its words appear in
+                the grid below.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="collapse collapse-arrow bg-white border border-slate-200 dark:bg-slate-900 dark:border-slate-800 rounded-2xl"
+          >
+            <input
+              type="radio"
+              name="faq-accordion"
+              aria-label="Can I search for a specific word?"
+            />
+            <div
+              class="collapse-title text-base sm:text-lg font-semibold pe-10"
+            >
+              Can I search for a specific word?
+            </div>
+            <div
+              class="collapse-content text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed"
+            >
+              <p>
+                Yes. Type the word into the Search Vocabulary box and press
+                Search to find it without browsing through the levels.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="collapse collapse-arrow bg-white border border-slate-200 dark:bg-slate-900 dark:border-slate-800 rounded-2xl"
+          >
+            <input
+              type="radio"
+              name="faq-accordion"
+              aria-label="What can I learn from each word?"
+            />
+            <div
+              class="collapse-title text-base sm:text-lg font-semibold pe-10"
+            >
+              What can I learn from each word?
+            </div>
+            <div
+              class="collapse-content text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed"
+            >
+              <p>
+                Every word shows up as a card. Open its details to see the
+                meaning and more information that helps you remember it.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="collapse collapse-arrow bg-white border border-slate-200 dark:bg-slate-900 dark:border-slate-800 rounded-2xl"
+          >
+            <input
+              type="radio"
+              name="faq-accordion"
+              aria-label="Can I use it on my phone?"
+            />
+            <div
+              class="collapse-title text-base sm:text-lg font-semibold pe-10"
+            >
+              Can I use it on my phone?
+            </div>
+            <div
+              class="collapse-content text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed"
+            >
+              <p>
+                Yes. The site adapts to mobile, tablet, laptop and desktop
+                screens, so you can learn wherever you are.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= MODAL ================= -->
+    <!-- <button class="btn" onclick="my_modal_2.showModal()">open modal</button> -->
+    <dialog id="my_modal_2" class="modal backdrop-blur-sm">
+      <div
+        class="modal-box w-11/12 max-w-md sm:max-w-lg lg:max-w-xl rounded-3xl p-5 sm:p-8 shadow-2xl bg-white text-slate-800 dark:bg-slate-900 dark:text-slate-100"
+      >
+        <div id="details-Container" class="space-y-4 sm:space-y-5"></div>
+      </div>
+      <form method="dialog" class="modal-backdrop">
+        <button>close</button>
+      </form>
+    </dialog>
+
+    <!-- ================= MODERN FOOTER ================= -->
+    <footer
+      class="relative overflow-hidden border-t border-slate-200 bg-slate-50 dark:border-slate-800 dark:bg-slate-900"
+    >
+      <!-- Decorative Background -->
+      <div
+        class="pointer-events-none absolute -top-20 -right-20 h-64 w-64 rounded-full bg-sky-200/30 blur-3xl dark:bg-sky-500/10"
+      ></div>
+
+      <div class="relative mx-auto w-11/12 max-w-7xl">
+        <!-- Main Footer -->
+        <div
+          class="grid grid-cols-1 gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4 lg:gap-12"
+        >
+          <!-- Brand Section -->
+          <div class="sm:col-span-2 lg:col-span-1">
+            <a href="#" class="inline-flex items-center gap-2">
+              <span
+                class="text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white"
+              >
+                English
+              </span>
+
+              <img
+                src="./assets/logo.png"
+                alt="English Janala Logo"
+                class="h-9 w-auto"
+              />
+
+              <span
+                class="font-bangla text-xl font-semibold text-slate-900 dark:text-white"
+              >
+                জানালা
+              </span>
+            </a>
+
+            <p
+              class="mt-5 max-w-sm text-sm leading-7 text-slate-500 dark:text-slate-400"
+            >
+              Make learning English simple, enjoyable, and effective. Improve
+              your vocabulary with interactive lessons and learn something new
+              every day.
+            </p>
+
+            <!-- Social Icons -->
+            <div class="mt-6 flex items-center gap-3">
+              <a
+                href="#"
+                aria-label="Facebook"
+                class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-600 transition-all duration-300 hover:-translate-y-1 hover:border-sky-500 hover:bg-sky-500 hover:text-white dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300"
+              >
+                <i class="fa-brands fa-facebook-f"></i>
+              </a>
+
+              <a
+                href="#"
+                aria-label="YouTube"
+                class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-600 transition-all duration-300 hover:-translate-y-1 hover:border-red-500 hover:bg-red-500 hover:text-white dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300"
+              >
+                <i class="fa-brands fa-youtube"></i>
+              </a>
+
+              <a
+                href="#"
+                aria-label="LinkedIn"
+                class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-600 transition-all duration-300 hover:-translate-y-1 hover:border-blue-600 hover:bg-blue-600 hover:text-white dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300"
+              >
+                <i class="fa-brands fa-linkedin-in"></i>
+              </a>
+
+              <a
+                href="#"
+                aria-label="GitHub"
+                class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-600 transition-all duration-300 hover:-translate-y-1 hover:border-slate-900 hover:bg-slate-900 hover:text-white dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300"
+              >
+                <i class="fa-brands fa-github"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Quick Links -->
+          <div>
+            <h3 class="mb-6 text-base font-bold text-slate-900 dark:text-white">
+              Quick Links
+            </h3>
+
+            <ul class="space-y-4 text-sm text-slate-500 dark:text-slate-400">
+              <li>
+                <a href="#" class="transition-colors hover:text-sky-500"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a href="#learn" class="transition-colors hover:text-sky-500"
+                  >Learn Vocabulary</a
+                >
+              </li>
+              <li>
+                <a href="#faq" class="transition-colors hover:text-sky-500"
+                  >FAQs</a
+                >
+              </li>
+              <li>
+                <a href="#learn" class="transition-colors hover:text-sky-500"
+                  >Explore Lessons</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Learning Resources -->
+          <div>
+            <h3 class="mb-6 text-base font-bold text-slate-900 dark:text-white">
+              Learning Resources
+            </h3>
+
+            <ul class="space-y-4 text-sm text-slate-500 dark:text-slate-400">
+              <li>
+                <a href="#learn" class="transition-colors hover:text-sky-500"
+                  >Vocabulary Practice</a
+                >
+              </li>
+              <li>
+                <a href="#learn" class="transition-colors hover:text-sky-500"
+                  >Interactive Lessons</a
+                >
+              </li>
+              <li>
+                <a href="#learn" class="transition-colors hover:text-sky-500"
+                  >Search Words</a
+                >
+              </li>
+              <li>
+                <a href="#faq" class="transition-colors hover:text-sky-500"
+                  >Help & Support</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Call to Action -->
+          <div>
+            <h3 class="mb-6 text-base font-bold text-slate-900 dark:text-white">
+              Start Your Journey
+            </h3>
+
+            <p class="text-sm leading-7 text-slate-500 dark:text-slate-400">
+              Take the next step toward improving your English. Start learning
+              new words today!
+            </p>
+
+            <a
+              href="#learn"
+              class="mt-6 inline-flex items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-sky-500 to-indigo-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-sky-500/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:shadow-none"
+            >
+              Start Learning
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Bottom Footer -->
+        <div
+          class="flex flex-col items-center justify-between gap-4 border-t border-slate-200 py-6 text-center sm:flex-row sm:text-left dark:border-slate-800"
+        >
+          <p class="text-sm text-slate-500 dark:text-slate-400">
+            &copy; 2026
+            <span class="font-semibold text-slate-700 dark:text-slate-200">
+              English Janala.
+            </span>
+            All rights reserved.
+          </p>
+
+          <p class="text-sm text-slate-500 dark:text-slate-400">
+            Learn English,
+            <span class="font-medium text-sky-500">
+              one lesson at a time.
+            </span>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document
+        .getElementById("theme-toggle")
+        .addEventListener("click", function () {
+          var root = document.documentElement;
+          var next =
+            root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+          root.setAttribute("data-theme", next);
+          try {
+            localStorage.setItem("theme", next);
+          } catch (e) {}
+        });
+    </script>
+
+    <script src="./Script/index.js"></script>
+  </body>
+</html>
