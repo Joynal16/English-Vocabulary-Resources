@@ -20,11 +20,11 @@ and review meanings and examples in a responsive interface.
 ## Run locally
 
 1. Install [Git](https://git-scm.com/downloads) and a modern browser.
-2. Clone the repository and enter its folder:
+2. Clone the repository and enter its folder: https://github.com/Joynal16/English-Vocabulary-Resources.git
 
 
 
-3. Start a local web server from the project folder. For example, with Python:
+4. Start a local web server from the project folder. For example, with Python:
 
    ```powershell
    py -m http.server 8000
@@ -32,13 +32,13 @@ and review meanings and examples in a responsive interface.
 
    Or use the **Live Server** extension in Visual Studio Code.
 
-4. Open [http://localhost:8000](http://localhost:8000) in your browser.
-5. On the sign-in page, use the demo credentials:
+5. Open [http://localhost:8000](http://localhost:8000) in your browser.
+6. On the sign-in page, use the demo credentials:
 
    - Number: `12345678910`
    - PIN: `1234`
 
-6. Choose a lesson or search for a word. Select the information button for
+7. Choose a lesson or search for a word. Select the information button for
    details, or the speaker button to hear a word.
 
 
