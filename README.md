@@ -48,35 +48,6 @@ and review meanings and examples in a responsive interface.
 > not provide real authentication or protect user data. Do not enter personal
 > information.
 
-## Publish with GitHub Pages
-
-The repository includes a GitHub Actions workflow that publishes the static
-site whenever changes are pushed to `main`.
-
-1. Create a **public** GitHub repository named `English-Vocabulary-Resources`.
-2. From the project folder, initialize Git and push the files:
-
-   ```powershell
-   git init
-   git add .
-   git commit -m "Create English Janala vocabulary learning app"
-   git branch -M main
-   git remote add origin https://github.com/<your-github-username>/English-Vocabulary-Resources.git
-   git push -u origin main
-   ```
-
-   Replace `<your-github-username>` with your GitHub username. If this folder
-   is already a Git repository, skip `git init`; if `origin` already exists,
-   update it with `git remote set-url origin <repository-url>`.
-
-3. In the GitHub repository, open **Settings → Pages** and set the build and
-   deployment source to **GitHub Actions** if it is not already selected.
-4. Open the **Actions** tab and wait for the **Deploy to GitHub Pages** workflow
-   to finish successfully.
-5. Visit
-   `https://<your-github-username>.github.io/English-Vocabulary-Resources/`.
-   The first deployment can take a few minutes. Later pushes to `main` publish
-   updates automatically.
 
 ## Project structure
 
