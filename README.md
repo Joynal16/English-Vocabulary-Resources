@@ -5,7 +5,7 @@ speakers. Browse vocabulary by lesson, look up a word, hear its pronunciation,
 and review meanings and examples in a responsive interface.
 
 **Live site:** After the first successful GitHub Pages deployment, open
-`https://<your-github-username>.github.io/English-Vocabulary-Resources/`.
+(https://vocabulary-learning-resource.netlify.app/)
 
 ## Features
 
@@ -44,9 +44,6 @@ and review meanings and examples in a responsive interface.
 6. Choose a lesson or search for a word. Select the information button for
    details, or the speaker button to hear a word.
 
-> **Demo sign-in only:** The credentials are hard-coded in the browser and do
-> not provide real authentication or protect user data. Do not enter personal
-> information.
 
 
 ## Project structure
