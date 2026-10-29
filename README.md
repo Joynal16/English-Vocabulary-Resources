@@ -10,7 +10,7 @@ and review meanings and examples in a responsive interface.
 ## Features
 
 - Demo sign-in page with a simple, client-side login flow
-- Vocabulary lessons loaded from the Programming Hero API
+- Vocabulary lessons loaded from the API
 - Search across the available vocabulary
 - Word details, including meaning, pronunciation, examples, and synonyms
 - Browser text-to-speech pronunciation
@@ -66,6 +66,7 @@ and review meanings and examples in a responsive interface.
 
 - HTML, CSS, and vanilla JavaScript
 - Tailwind CSS and daisyUI, loaded from CDNs
+- Lesson will load form API
 - Font Awesome and Google Fonts
 - GitHub Actions and GitHub Pages for deployment
 
