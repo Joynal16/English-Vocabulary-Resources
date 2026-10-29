@@ -22,10 +22,7 @@ and review meanings and examples in a responsive interface.
 1. Install [Git](https://git-scm.com/downloads) and a modern browser.
 2. Clone the repository and enter its folder:
 
-   ```powershell
-   git clone https://github.com/<your-github-username>/English-Vocabulary-Resources.git
-   cd English-Vocabulary-Resources
-   ```
+
 
 3. Start a local web server from the project folder. For example, with Python:
 
