@@ -7,6 +7,18 @@ and review meanings and examples in a responsive interface.
 **Live site:** After the first successful GitHub Pages deployment, open
 (https://vocabulary-learning-resource.netlify.app/)
 
+<img width="481" height="757" alt="Screenshot 2026-10-29 223331" src="https://github.com/user-attachments/assets/0f959daf-8266-4edc-ac7b-e5777d941e28" />
+
+<img width="971" height="786" alt="Screenshot 2026-10-29 223426" src="https://github.com/user-attachments/assets/57df6c1e-8e3b-4f4f-8783-5faed61bc769" />
+
+<img width="992" height="789" alt="Screenshot 2026-10-29 223447" src="https://github.com/user-attachments/assets/54a16d6d-7c02-44fc-9f00-d75244703805" />
+
+
+
+
+
+
+
 ## Features
 
 - Demo sign-in page with a simple, client-side login flow
