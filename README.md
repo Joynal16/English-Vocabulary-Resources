@@ -99,7 +99,6 @@ site whenever changes are pushed to `main`.
 - HTML, CSS, and vanilla JavaScript
 - Tailwind CSS and daisyUI, loaded from CDNs
 - Font Awesome and Google Fonts
-- [Programming Hero vocabulary API](https://openapi.programming-hero.com/)
 - GitHub Actions and GitHub Pages for deployment
 
 The site has no package installation or build step. An internet connection is
