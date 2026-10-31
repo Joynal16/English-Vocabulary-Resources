@@ -72,7 +72,7 @@ const displayWordDetails = (details) => {
                     </div>
                     <div class="">
                         <h2 class="font-bold">Example</h2>
-                        <p>${details.example || "উদাহরণ পাওয়া যায়নি"}</p>
+                        <p>${details.sentence || "উদাহরণ পাওয়া যায়নি"}</p>
                     </div>
                     <div class="">
                         <h2 class="font-bold">Synonym</h2>
