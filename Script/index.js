@@ -76,7 +76,7 @@ const displayWordDetails = (details) => {
                     </div>
                     <div class="">
                         <h2 class="font-bold">Synonym</h2>
-                        ${(details.synonyms || []).map((synonym) => `<span class=" btn">${synonym}</span>`).join("")}
+                        ${(details.synonyms || []).map((synonym) => `<span class=" btn">${synonym}</span>`).join(" ")}
                     </div>
     `;
   document.getElementById("my_modal_2").showModal();
